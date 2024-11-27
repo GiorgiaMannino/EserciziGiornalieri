@@ -1,0 +1,41 @@
+body{text-align: center;}
+header img {width: 200px;}
+*{font-family: Georgia, 'Times New Roman', Times, serif;}
+nav{
+    color:rgb(18, 114, 106) ;
+    background-color:rgba(255, 255, 0, 0.123);
+    padding: 0.3em;
+    border-top: 0.1em solid hsl(54, 78%, 55%);}
+    h1{
+        font-size: 3em;
+        margin:auto;
+        text-align: center;
+    
+    }
+    article{
+        width: 50%;
+        margin:auto;
+        text-align: left;
+    }
+    article img{
+        width: 100%;
+    }
+
+#fonte-immagine{
+    color:grey;
+    margin-top: 0.5em;
+    text-align: center;
+}
+
+a{color: rgb(18, 114, 106);}
+#featured {color: rgb(150, 17, 17);}
+.titoli{
+    padding-bottom: 0.5em;
+    border-bottom: 0.1em solid #15cee61e;
+}
+footer {
+    width: 50%;
+    margin:auto;
+    text-align: left;
+
+}
