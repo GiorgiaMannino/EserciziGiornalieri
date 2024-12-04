@@ -169,7 +169,7 @@ if (val < 10) {
   } else if (val < 5) {
     console.log("Meno di 5");
   } else {
-    console.log("Più di 10");
+    console.log("Uguale a 7");
   }
 
 
