@@ -62,11 +62,8 @@ console.log("ESERCIZIO 4")
 function sommaArray () {
 
   let somma = 0
-  arr2.forEach(ele => {
-    somma += ele; });
+  arr2.forEach(ele => somma += ele);
     return somma;
-
-
 }
 console.log( sommaArray())
 
@@ -257,6 +254,19 @@ const movies = [
 /* ESERCIZIO 9 (forEach)
   Scrivi una funzione per trovare il film più vecchio nell'array fornito.
 */
+
+function oldFilm(arr) {
+  let film = {Year: 5000}
+  arr.forEach(f => {
+    if(film.Year > f.Year) {
+      film = f
+    }
+  }) 
+  return film
+}
+
+console.log(oldFilm(movies))
+
 
 /* ESERCIZIO 10
   Scrivi una funzione per ottenere il numero di film contenuti nell'array fornito.
