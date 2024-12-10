@@ -35,7 +35,7 @@
 
   <body>
     <div>
-      <h1 onclick="makeItClickable()">Questo è il titolo della pagina</h1>
+      <h1>Questo è il titolo della pagina</h1>
       <h2>Questo è il sottotitolo della pagina</h2>
     </div>
 
@@ -88,11 +88,7 @@
 
       const changeTitle = function () {
         const titleElement = document.querySelector(" div > h1");
-        if (titleElement) {
           titleElement.innerText = "Nuovo Titolo";
-        } else {  
-          console.error("Elemento h1 non trovato!");
-        }
       };
 
 changeTitle();
@@ -104,12 +100,9 @@ changeTitle();
     */
 
       const addClassToTitle = function () {
-        let titleElement = document.querySelector("div > h1")
-        if (titleElement) {
-          titleElement.classList.add("myHeading")
-        } else {
-          console.error("Elemento h1 non trovato!");
-        }
+        let title = document.querySelector("div > h1")
+          title.classList.add("myHeading")
+         // title.className ="altraClasse" altro modo per mettere la classe
 
       };
       addClassToTitle()
@@ -121,8 +114,8 @@ changeTitle();
 
       const changePcontent = function () {
         let textp = document.querySelectorAll("div > p")
-        textp.forEach(p => {
-          p.innerText ="Cambio il testo di p"
+        textp.forEach(ele => {
+          ele.innerText ="Cambio il testo di p"
         })
       }
       changePcontent ()
@@ -134,9 +127,9 @@ changeTitle();
       */
 
       const changeUrls = function () {
-        let changeHref = document.querySelectorAll ("div >  a")
-        changeHref.forEach(a => {
-          a.href =" https://www.google.com "
+        let changeHref = document.querySelectorAll ("a:not(footer a)") //a:not(footer a)
+        changeHref.forEach(ele => {
+          ele.href =" https://www.google.com "
         })
 
       }
@@ -147,7 +140,7 @@ changeTitle();
     */
 
       const addToTheSecond = function () {
-        let ul = document.querySelectorAll ("ul") [1]
+        let ul = document.querySelector ("#secondList")
         let list = document.createElement ("li")
         list.innerText ="Nuovo elemento della lista non ordinata"
         ul.appendChild (list)
@@ -218,6 +211,9 @@ changeTitle();
 
 makeItClickable();
 
+
+
+
       
       /* ESERCIZIO 10
        Crea una funzione che, al click sul footer, riveli l'URL del link interno come contenuto di un alert()
@@ -225,6 +221,7 @@ makeItClickable();
 
       const revealFooterLink = function () {
         let clickFooter = document.querySelector("footer")
+        
         clickFooter.onclick = function () {
          let link = clickFooter.querySelector("a");
          if (link) {
@@ -241,43 +238,13 @@ makeItClickable();
        Crea una funzione che crei una tabella nell'elemento con id "tableArea". 
        La tabella avrà 5 elementi e questa struttura: immagine, nome prodotto, quantità, prezzo
     */
-
-      const generateTable = function () {
-      let tableArea = document.getAnimations ("tableArea") //seleziono l'id
-
-      let box = document.createElement("table")
-      box.setAttribute("border", "1"); // Aggiungi un bordo alla tabella (opzionale)
-
-      let thead = document.createElement ("thead")
-      let trHeader = document.createElement ("tr")
-
-      let th1  = document.createElement ("th")
-
-      let th2 = document.createElement ("th")
-
-      let th3 = document.createElement ("th")
-      
-      let th4 = document.createElement ("th")
-
-      th1.innerText="Immagine"
-      th2.innerText="Nome Prodotto"
-      th3.innerText="Quantità"
-      th4.innerText="Prezzo"
-
-        // Aggiungo le celle all'intestazione della tabella
-      trHeader.appendChild(th1);
-      trHeader.appendChild(th2);
-      trHeader.appendChild(th3);
-      thead.appendChild(trHeader);
-      box.appendChild(thead);
+      const generateTable = function () { }
 
 
 
 
 
 
-      }
-      generateTable()
 
       /* ESERCIZIO 12
        Crea una funzione che aggiunga una riga alla tabella precedentemente creata e fornisca i dati necessari come parametri
