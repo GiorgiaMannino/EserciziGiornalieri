@@ -1,0 +1,52 @@
+body {
+    background-color: #f5ede4;
+    margin: 2em;
+}
+
+div input {
+    background-color: #ffffff;
+    color: rgb(82, 48, 5);
+    width: 10%;
+    padding: 1em;
+    border: 1px solid rgb(151, 101, 35);
+    border-radius: 3em;
+    margin-right: 3em;
+    margin-bottom: 5em;
+}
+
+div button {
+    background-color: rgb(151, 101, 35);
+    color: rgb(255, 255, 255);
+    width: 4%;
+    padding: 0.8em;
+    border: none;
+    border-radius: 0.5em;
+    margin-right: 4em;
+    margin-bottom: 5em;
+
+
+}
+
+section {
+    background-color: white;
+    border: 1px solid rgb(151, 101, 35);
+    border-radius: 0.5em;
+    padding: 1em;
+}
+
+ol li {
+    color: rgb(151, 101, 35);
+    font-weight: bold;
+    border-bottom: 0.5px solid  rgba(151, 101, 35, 0.322);
+    
+    
+    
+}
+
+
+
+
+.completed {
+    text-decoration: line-through;
+    color:  rgb(82, 48, 5);
+}
