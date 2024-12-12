@@ -1,0 +1,63 @@
+* {
+    box-sizing: border-box;
+    font-family:'Times New Roman', Times, serif;
+}
+
+.container {
+    max-width: 780px;
+    margin: auto;
+}
+
+
+body {
+    margin: 0;
+    background-color: #34131e;
+    color: #ebebeb;
+    font-family: "Outfit", sans-serif;
+}
+
+
+#tombola div  {
+    display: inline-block;
+}
+
+.number {
+    border: 0.2px  rgba(255, 255, 255, 0.192);
+    border-style:dashed;
+    width: 10%;
+    height: 80px;
+    display: inline-block;
+    cursor: pointer;
+    
+}
+
+.number h3 {
+    font-size: 1.5em;
+    display: inline-block;
+    padding-top: 0.1em;
+    padding-left: 1em;
+
+}
+
+h1 {
+    font-weight:900;
+    padding: 1em 0;
+}
+
+div button {
+    display: inline-block;
+    padding: 1em;
+    margin-top: 3em;
+    margin-left: 35em;
+    border: none;
+    border-radius: 3em;
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.2); /* Ombra */
+    font-size: 1em;
+    font-weight:900;
+
+}
+
+.selecterNumber {
+    background-color: #250d15b9; /* Cambia il colore di sfondo */
+
+}
