@@ -1,0 +1,34 @@
+@import "./partials/resets";
+@import "./partials/colors";
+@import "./partials/fonts";
+@import "./partials/buttons";
+@import "./partials/spacings";
+@import "./partials/variables";
+@import "./partials/mixins";
+
+body {
+  $font-sans-serif: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  $font-serif: Georgia, "Times New Roman", Times, serif;
+}
+section {
+  background-color: $color-bg-hero;
+  display: flex;
+  align-items: center;
+  padding-inline: $size-3;
+  padding-block: $size-2;
+  color: $color-text;
+
+  div {
+    margin-right: auto;
+  }
+}
+
+.btn1 {
+  background-color: $blue;
+}
+.btn2 {
+  background-color: $orange;
+}
+.btn3 {
+  background-color: $orange;
+}
