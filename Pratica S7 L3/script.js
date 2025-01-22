@@ -37,7 +37,7 @@ fetch("https://striveschool-api.herokuapp.com/books")
 
     row.addEventListener("click", (event) => {
       if (event.target.classList.contains("btn-delete")) {
-        const card = event.target.closest(".card");
+        const card = event.target.closest(".col");
         if (card) {
           card.remove();
         }
