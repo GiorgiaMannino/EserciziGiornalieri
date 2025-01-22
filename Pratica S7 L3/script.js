@@ -1,14 +1,14 @@
 // chiamo fetch, cioè effettuo un HTTP REQUEST all'indirizzo specificato
 fetch("https://striveschool-api.herokuapp.com/books")
   //implemento metodo then e catch
-  .then((responseObj) => {
-    console.log(responseObj);
+  .then((response) => {
+    console.log(response);
     // a questo punto otteniamo dalla fetch l'oggetto di risposta come primo risultato
     // possiamo valutarne l'esito andando a leggere la proprietà ok dell'oggetto
     // essendo connessa allo status per valori compresi tra 100 e 399 avremo ok === true
     // da 400 a 599 avremo ok === false
-    if (responseObj.ok) {
-      return responseObj.json();
+    if (response.ok) {
+      return response.json();
     }
   })
 
@@ -28,7 +28,7 @@ fetch("https://striveschool-api.herokuapp.com/books")
               <h5 class="card-title">${book.title}</h5>
               <p class="card-text"> € ${book.price}</p>
                <a href="#" class="btn btn-success btn-buy">Compra ora</a>
-              <a href="#" class="btn   btn-danger btn-delete">Scarta</a>
+              <a href="#" class="btn   btn-secondary btn-delete">Scarta</a>
             </div>
           </div>`;
 
