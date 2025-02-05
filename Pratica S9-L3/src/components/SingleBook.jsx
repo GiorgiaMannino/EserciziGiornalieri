@@ -18,8 +18,8 @@ class SingleBook extends Component {
         <Row>
           <Col key={this.props.book.asin}>
             <Card
-              className={`mb-5 shadow Card ${this.state.selected ? "border border-danger" : "border-0"}`}
-              style={{ width: "100%", maxHeight: "30rem" }}
+              className={`mb-4 shadow ${this.state.selected ? "border border-danger" : "border-0"}`}
+              style={{ height: "480px", display: "flex", flexDirection: "column" }}
             >
               <Card.Img
                 onClick={this.toggleSelect}
@@ -27,14 +27,16 @@ class SingleBook extends Component {
                 src={this.props.book.img}
                 style={{
                   height: "250px",
-                  width: "100%",
+                  objectFit: "cover",
                   cursor: "pointer",
                 }}
               />
-              <Card.Body>
-                <Card.Title>{this.props.book.title}</Card.Title>
-                <Card.Text>€ {this.props.book.price}</Card.Text>
-                <Button variant="primary">Acquista</Button>
+              <Card.Body className="d-flex flex-column justify-content-between  p-2" style={{ flexGrow: 1 }}>
+                <Card.Title className="fs-5">{this.props.book.title}</Card.Title>
+                <Card.Text className="fs-6">€ {this.props.book.price}</Card.Text>
+                <Button variant="primary" size="sm">
+                  Acquista
+                </Button>
               </Card.Body>
             </Card>
           </Col>

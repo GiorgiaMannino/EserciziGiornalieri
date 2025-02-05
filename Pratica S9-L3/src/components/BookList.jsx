@@ -7,11 +7,6 @@ class BookList extends Component {
     searchTerm: "",
   };
 
-  // Funzione per aggiornare lo stato con il valore del campo di ricerca
-  handleSearchChange = (event) => {
-    this.setState({ searchTerm: event.target.value });
-  };
-
   render() {
     // Filtra i libri in base al titolo (case-insensitive) senza destructuring
     const filteredBooks = this.props.books.filter((book) =>
@@ -28,7 +23,7 @@ class BookList extends Component {
                   type="text"
                   placeholder="Cerca un libro..."
                   value={this.state.searchTerm}
-                  onChange={this.handleSearchChange}
+                  onChange={(event) => this.setState({ searchTerm: event.target.value })}
                 />
               </Form.Group>
             </Form>
