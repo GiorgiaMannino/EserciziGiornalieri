@@ -1,42 +1,36 @@
 import { Component } from "react";
+import { Alert, Container, Form, Row } from "react-bootstrap";
+
 import SingleBook from "./SingleBook";
-import { Col, Container, Form, Row } from "react-bootstrap";
 
 class BookList extends Component {
   state = {
-    searchTerm: "",
+    searchQuery: ""
   };
 
   render() {
-    // Filtra i libri in base al titolo (case-insensitive) senza destructuring
-    const filteredBooks = this.props.books.filter((book) =>
-      book.title.toLowerCase().includes(this.state.searchTerm.toLowerCase())
-    );
-
     return (
       <Container>
-        <Row>
-          <Col>
-            <Form className="mb-4">
-              <Form.Group controlId="search">
-                <Form.Control
-                  type="text"
-                  placeholder="Cerca un libro..."
-                  value={this.state.searchTerm}
-                  onChange={(event) => this.setState({ searchTerm: event.target.value })}
-                />
-              </Form.Group>
-            </Form>
-          </Col>
+        <Form.Control
+          className="mt-4"
+          type="text"
+          placeholder="Cerca un titolo"
+          value={this.state.searchQuery}
+          onChange={(e) => this.setState({ searchQuery: e.target.value })}
+        />
+        <Row xs={1} sm={2} md={4} xl={5} xxl={6} className="mt-4">
+          {this.props.books
+            .filter((book) => book.title.toLowerCase().includes(this.state.searchQuery.toLowerCase()))
+            .map((book) => (
+              <SingleBook key={book.asin} book={book} />
+            ))}
         </Row>
-        <Row>
-          {/* Mappa i libri filtrati */}
-          {filteredBooks.map((book) => (
-            <Col xs={12} sm={6} md={3} lg={2} key={book.asin}>
-              <SingleBook book={book} />
-            </Col>
-          ))}
-        </Row>
+
+        {this.props.books.length === 0 && (
+          <Alert variant="warning" className="mt-4">
+            Premi un bottone per visualizzare dei libri👆
+          </Alert>
+        )}
       </Container>
     );
   }

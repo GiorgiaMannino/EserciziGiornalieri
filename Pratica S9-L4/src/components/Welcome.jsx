@@ -9,7 +9,7 @@ class Welcome extends Component {
   render() {
     return (
       <>
-        <Alert show={this.state.show} variant="success">
+        <Alert show={this.state.show} variant="success" className="px-5 mb-5">
           <Alert.Heading>Benvenuto in BookShop!</Alert.Heading>
           <p>Scopri il nostro catalogo: i migliori libri, sempre a portata di mano.</p>
           <hr />

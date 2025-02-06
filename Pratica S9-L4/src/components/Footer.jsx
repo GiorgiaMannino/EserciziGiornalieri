@@ -6,7 +6,7 @@ const MyFooter = (props) => {
           <div className="row">
             <div className="col-md-4">
               <h5> {props.title} </h5>
-              <p>Soluzioni web innovative per il tuo business.</p>
+              <p>Lo shop migliore per i tuoi acquisti.</p>
             </div>
 
             <div className="col-md-4">
