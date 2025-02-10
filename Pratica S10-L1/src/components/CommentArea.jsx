@@ -11,9 +11,11 @@ class CommentArea extends Component {
   };
 
   fetchComments = async () => {
+    if (!this.props.asin) return; // Non fare nulla se non è stato selezionato un libro
+
     this.setState({ loading: true, error: null });
     try {
-      const resp = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + this.props.asin, {
+      const resp = await fetch(`https://striveschool-api.herokuapp.com/api/comments/${this.props.asin}`, {
         method: "GET",
         headers: {
           Authorization:
@@ -38,14 +40,15 @@ class CommentArea extends Component {
   }
 
   render() {
+    const { reviews, loading, error } = this.state;
+
     return (
       <div className="commentArea">
         <h6>CommentArea</h6>
         {!this.props.asin && <Alert variant="info">Seleziona un libro per vedere i commenti</Alert>}
-        {this.state.loading && <Alert variant="warning">Caricamento commenti...</Alert>}
-
-        {this.state.error && <Alert variant="danger">{this.state.error}</Alert>}
-        <CommentList reviews={this.state.reviews} />
+        {loading && <Alert variant="warning">Caricamento commenti...</Alert>}
+        {error && <Alert variant="danger">{error}</Alert>}
+        <CommentList reviews={reviews} />
         <AddComment asin={this.props.asin} />
       </div>
     );
