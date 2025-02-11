@@ -1,26 +1,25 @@
-import { Card } from "react-bootstrap";
-// import CommentArea from './CommentArea'
-/* import { useState } from "react"; */
+import { Badge, Button, Card, Col } from "react-bootstrap";
 
-const SingleBook = ({ book, selectedBook, changeSelectedBook }) => {
-  // Stato gestito dal componente padre, quindi nessun useState necessario qui
-
+const SingleBook = ({ book, selected, selectBook }) => {
   return (
-    <>
+    <Col>
       <Card
-        // onClick={() => this.setState({ selected: !this.state.selected })}
-        onClick={() => changeSelectedBook(book.asin)}
-        style={{
-          border: selectedBook === book.asin ? "3px solid red" : "none",
-        }}
+        className={`border ${selected ? "border-danger" : ""} shadow`}
+        onClick={() => selectBook(book.asin)} // Chiamato per selezionare il libro
       >
         <Card.Img variant="top" src={book.img} />
         <Card.Body>
-          <Card.Title style={{ color: "black" }}>{book.title}</Card.Title>
+          <Card.Title>{book.title}</Card.Title>
+          <Card.Text>{book.category}</Card.Text>
+          <Card.Text>
+            <Badge bg="info">€{book.price}</Badge>
+          </Card.Text>
+          <Button variant="primary" size="sm">
+            Acquista
+          </Button>
         </Card.Body>
       </Card>
-      {/* {this.state.selected && <CommentArea asin={this.props.book.asin} />} */}
-    </>
+    </Col>
   );
 };
 

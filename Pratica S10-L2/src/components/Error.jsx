@@ -1,7 +1,5 @@
-import { Alert } from 'react-bootstrap'
+const Error = ({ message }) => {
+  return <div className="text-danger text-center my-3">❌ Errore: {message}</div>;
+};
 
-const Error = () => (
-  <Alert variant="danger">Errore - Stai utilizzando il tuo Bearer token?</Alert>
-)
-
-export default Error
+export default Error;

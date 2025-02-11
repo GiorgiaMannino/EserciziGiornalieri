@@ -1,47 +1,51 @@
 import { useState } from "react";
+import { Alert, Col, Container, Form, Row } from "react-bootstrap";
 import SingleBook from "./SingleBook";
-import { Col, Form, Row } from "react-bootstrap";
 import CommentArea from "./CommentArea";
 
 const BookList = ({ books }) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedBook, setSelectedBook] = useState(null);
+  const [selectedAsin, setSelectedAsin] = useState(null);
 
-  const changeSelectedBook = (asin) => {
-    setSelectedBook(asin);
+  const selectBook = (asin) => {
+    setSelectedAsin(asin);
   };
 
   return (
-    <>
+    <Container>
+      <Form.Control
+        className="mt-4"
+        type="text"
+        placeholder="Cerca un titolo"
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
+      />
       <Row>
-        <Col md={8}>
-          <Row className="justify-content-center mt-5">
-            <Col xs={12} md={4} className="text-center">
-              <Form.Group>
-                <Form.Control
-                  type="search"
-                  placeholder="Cerca un libro"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                />
-              </Form.Group>
-            </Col>
-          </Row>
-          <Row className="g-2 mt-3">
+        <Col xs={8} className="mt-4">
+          <Row className="g-3">
             {books
-              .filter((b) => b.title.toLowerCase().includes(searchQuery))
-              .map((b) => (
-                <Col xs={12} md={4} key={b.asin}>
-                  <SingleBook book={b} selectedBook={selectedBook} changeSelectedBook={changeSelectedBook} />
+              .filter((book) => book.title.toLowerCase().includes(searchQuery.toLowerCase()))
+              .map((book) => (
+                <Col xs={6} md={4} lg={3} key={book.asin}>
+                  <SingleBook
+                    book={book}
+                    selected={selectedAsin === book.asin} // Indica se il libro è selezionato
+                    selectBook={selectBook} // Passiamo la funzione selectBook per selezionare il libro
+                  />
                 </Col>
               ))}
           </Row>
         </Col>
-        <Col md={4}>
-          <CommentArea asin={selectedBook} />
+        <Col xs={4} className="mt-4">
+          <CommentArea asin={selectedAsin} />
         </Col>
       </Row>
-    </>
+      {books.length === 0 && (
+        <Alert variant="warning" className="mt-4">
+          Premi un bottone per visualizzare dei libri👆
+        </Alert>
+      )}
+    </Container>
   );
 };
 

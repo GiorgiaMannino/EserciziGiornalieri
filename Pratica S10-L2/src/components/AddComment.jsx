@@ -2,85 +2,67 @@ import { useState, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 
 const AddComment = ({ asin }) => {
-  const [comment, setComment] = useState({
+  const [review, setReview] = useState({
     comment: "",
-    rate: 1,
+    rate: "1",
     elementId: asin,
   });
 
-  // Aggiorna elementId quando cambia asin
   useEffect(() => {
-    setComment((prevComment) => ({ ...prevComment, elementId: asin }));
+    setReview((prevReview) => ({
+      ...prevReview,
+      elementId: asin,
+    }));
   }, [asin]);
 
-  const sendComment = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    try {
-      let response = await fetch("https://striveschool-api.herokuapp.com/api/comments", {
-        method: "POST",
-        body: JSON.stringify(comment),
-        headers: {
-          "Content-type": "application/json",
-          Authorization:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2E0ZGUxYmNhMDcwNDAwMTU4YmY5NzkiLCJpYXQiOjE3Mzg4NTgwMTEsImV4cCI6MTc0MDA2NzYxMX0.KY1i3aAaFytdpVHLectYt_unBT7ZsLQJtlf6z-iXCXg",
-        },
-      });
-      if (response.ok) {
-        alert("Recensione inviata!");
-        setComment({
-          comment: "",
-          rate: 1,
-          elementId: asin,
-        });
-      } else {
-        throw new Error("Qualcosa è andato storto");
-      }
-    } catch (error) {
-      alert(error);
+    console.log("SUBMIT", review);
+
+    const resp = await fetch("https://striveschool-api.herokuapp.com/api/comments/", {
+      method: "POST",
+      body: JSON.stringify(review),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization:
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2N2E0ZGUxYmNhMDcwNDAwMTU4YmY5NzkiLCJpYXQiOjE3Mzg4NTgwMTEsImV4cCI6MTc0MDA2NzYxMX0.KY1i3aAaFytdpVHLectYt_unBT7ZsLQJtlf6z-iXCXg",
+      },
+    });
+
+    if (resp.ok) {
+      alert("Recensione inviata!");
+      setReview({ comment: "", rate: "1", elementId: asin }); // Resetta il form
+    } else {
+      alert("Errore nell'invio della recensione!");
     }
   };
 
   return (
-    <div className="my-3">
-      <Form onSubmit={sendComment}>
-        <Form.Group className="mb-2">
-          <Form.Label>Recensione</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Inserisci qui il testo"
-            value={comment.comment}
-            onChange={(e) =>
-              setComment((prevComment) => ({
-                ...prevComment,
-                comment: e.target.value,
-              }))
-            }
-          />
-        </Form.Group>
-        <Form.Group className="mb-2">
-          <Form.Label>Valutazione</Form.Label>
-          <Form.Control
-            as="select"
-            value={comment.rate}
-            onChange={(e) =>
-              setComment((prevComment) => ({
-                ...prevComment,
-                rate: e.target.value,
-              }))
-            }
-          >
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </Form.Control>
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Invia
-        </Button>
-      </Form>
-    </div>
+    <Form onSubmit={handleSubmit}>
+      <Form.Group className="mb-3" controlId="comment">
+        <Form.Label>Commento</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Scrivi la recensione"
+          value={review.comment}
+          onChange={(e) => setReview({ ...review, comment: e.target.value })}
+          required
+        />
+      </Form.Group>
+      <Form.Group className="mb-3" controlId="rate">
+        <Form.Label>Voto</Form.Label>
+        <Form.Select value={review.rate} onChange={(e) => setReview({ ...review, rate: e.target.value })} required>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </Form.Select>
+      </Form.Group>
+      <Button type="submit" variant="success">
+        Invia Recensione
+      </Button>
+    </Form>
   );
 };
 

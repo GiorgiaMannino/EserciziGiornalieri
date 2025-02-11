@@ -1,26 +1,45 @@
-import 'bootstrap/dist/css/bootstrap.min.css'
-import './App.css'
-import MyNav from './components/MyNav'
-import MyFooter from './components/MyFooter'
-import Welcome from './components/Welcome'
-// import AllTheBooks from './components/AllTheBooks'
-import { Container } from 'react-bootstrap'
-import BookList from './components/BookList'
+import { useState } from "react";
+import "./App.css";
+import BookList from "./components/BookList";
+import Footer from "./components/Footer";
+import MyNav from "./components/MyNav";
+import Welcome from "./components/Welcome";
 
-import fantasy from './data/fantasy.json'
+import fantasy from "./data/books/fantasy.json";
+import history from "./data/books/history.json";
+import horror from "./data/books/horror.json";
+import romance from "./data/books/romance.json";
+import scifi from "./data/books/scifi.json";
+import { Button } from "react-bootstrap";
 
-function App() {
+const App = () => {
+  const [books, setBooks] = useState(fantasy);
+
   return (
-    <>
+    <div style={{ backgroundColor: "#E9E5DC" }}>
       <MyNav />
-      <Container>
-        <Welcome />
-        {/* <AllTheBooks /> */}
-        <BookList books={fantasy} />
-      </Container>
-      <MyFooter />
-    </>
-  )
-}
+      <Welcome />
+      <div className="d-flex justify-content-center gap-1">
+        <Button variant="primary" onClick={() => setBooks(fantasy)}>
+          Fantasy
+        </Button>
+        <Button variant="warning" onClick={() => setBooks(history)}>
+          History
+        </Button>
+        <Button variant="danger" onClick={() => setBooks(horror)}>
+          Horror
+        </Button>
+        <Button variant="success" onClick={() => setBooks(romance)}>
+          Romance
+        </Button>
+        <Button variant="info" onClick={() => setBooks(scifi)}>
+          Scifi
+        </Button>
+      </div>
+      <BookList books={books} />
+      <Footer />
+    </div>
+  );
+};
 
-export default App
+export default App;

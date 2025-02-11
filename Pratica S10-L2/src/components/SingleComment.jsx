@@ -1,39 +1,34 @@
-import { Button, ListGroup } from 'react-bootstrap'
+import { Button, ListGroupItem } from "react-bootstrap";
 
-const SingleComment = ({ comment }) => {
-  const deleteComment = async (asin) => {
+const SingleComment = ({ review }) => {
+  const handleDelete = async (id) => {
     try {
-      let response = await fetch(
-        'https://striveschool-api.herokuapp.com/api/comments/' + asin,
-        {
-          method: 'DELETE',
-          headers: {
-            Authorization: 'Bearer inserisci-qui-il-tuo-token',
-          },
-        }
-      )
-      if (response.ok) {
-        alert('La recensione è stata elimata!')
+      const resp = await fetch("https://striveschool-api.herokuapp.com/api/comments/" + id, {
+        method: "DELETE",
+        headers: {
+          Authorization:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NzkzNTk1M2I3NDcwMTAwMTU4YjJhZWUiLCJpYXQiOjE3Mzg4NTA3OTksImV4cCI6MTc0MDA2MDM5OX0.00SLFE2EDakxsPuFfJRP7aErpCW1j68EsgUZYJRvSF4",
+        },
+      });
+
+      if (resp.ok) {
+        alert("Commento eliminato con successo");
       } else {
-        throw new Error('La recensione non è stata eliminata!')
+        alert("Errore nell'eliminazione del commento");
       }
-    } catch (error) {
-      alert(error)
+    } catch {
+      alert("Errore nel contattare il server");
     }
-  }
+  };
 
   return (
-    <ListGroup.Item>
-      {comment.comment}
-      <Button
-        variant="danger"
-        className="ms-2"
-        onClick={() => deleteComment(comment._id)}
-      >
-        Elimina
+    <ListGroupItem className="d-flex justify-content-between">
+      <span>{review.comment}</span> <span>{review.rate}</span>
+      <Button variant="danger" onClick={() => handleDelete(review._id)}>
+        🗑️
       </Button>
-    </ListGroup.Item>
-  )
-}
+    </ListGroupItem>
+  );
+};
 
-export default SingleComment
+export default SingleComment;
