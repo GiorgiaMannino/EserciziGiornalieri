@@ -19,7 +19,7 @@ const App = () => {
       setLoading(false);
     }, 300);
 
-    return () => clearTimeout(timer); // Pulizia del timeout quando il componente si smonta
+    return () => clearTimeout(timer);
   }, []);
 
   if (loading) {
