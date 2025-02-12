@@ -33,7 +33,7 @@ const MovieDetails = ({ title }) => {
 
   return (
     <Container>
-      <h1 className="text-white"> Dettagli </h1>
+      <h1 className="text-white">Dettagli film</h1>
       <h5 className="text-white mt-4 mb-3">{title}</h5>
       <Row className="row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-6 g-2">
         {movies.map((movie) => (
