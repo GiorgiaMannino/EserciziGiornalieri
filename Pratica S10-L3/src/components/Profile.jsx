@@ -6,11 +6,11 @@ const Profile = () => {
     <Container>
       <Row>
         <Col xs={12} md={2} className="text-start">
-          <img height="60" src="./src/assets/netflix_logo.png" alt="Netflix Logo" />
+          {/*    <img height="60" src="./src/assets/netflix_logo.png" alt="Netflix Logo" /> */}
         </Col>
 
         <Col xs={12} md={10}>
-          <h1 className="display-3 text-white mt-5">Edit Profile</h1>
+          <h1 className="display-3 text-white ">Edit Profile</h1>
           <hr className="mt-4 mb-4 text-white" />
 
           <Row>

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router";
-
 import { Container, Row, Col, Spinner, Alert } from "react-bootstrap";
+import AddComment from "./AddComment";
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -11,7 +11,7 @@ const MovieDetails = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    let isMounted = true; // Per prevenire aggiornamenti di stato dopo un'eventuale smontaggio
+    let isMounted = true;
 
     const fetchMovieDetails = async () => {
       try {
@@ -57,9 +57,13 @@ const MovieDetails = () => {
     fetchData();
 
     return () => {
-      isMounted = false; // Evita aggiornamenti di stato se il componente si smonta
+      isMounted = false;
     };
   }, [movieId]);
+
+  const addComment = (newComment) => {
+    setComments((prevComments) => [...prevComments, newComment]);
+  };
 
   if (loading) return <Spinner animation="border" variant="light" className="d-block mx-auto mt-5" />;
   if (error) return <Alert variant="danger">{error}</Alert>;
@@ -69,7 +73,7 @@ const MovieDetails = () => {
       {movie && (
         <>
           <Row>
-            <h1 className="mb-5">Dettagli - {movie.Title} </h1>
+            <h1 className="mb-5">Dettagli - {movie.Title}</h1>
             <Col md={4}>
               <img src={movie.Poster} alt={movie.Title} className="img-fluid rounded" />
             </Col>
@@ -112,6 +116,7 @@ const MovieDetails = () => {
               ) : (
                 <p>Non ci sono commenti.</p>
               )}
+              <AddComment movieId={movieId} addComment={addComment} /> {/* Passa la funzione addComment */}
             </Col>
           </Row>
         </>

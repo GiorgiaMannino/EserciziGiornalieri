@@ -7,8 +7,8 @@ const Movies = () => {
       <MoviesHeader />
       <Gallery title="Harry Potter" />
       <Gallery title="Dune" />
-      <Gallery title="Dune" />
-      <Gallery title="Dune" />
+      <Gallery title="Lord of the Rings" />
+      <Gallery title="X-Men" />
     </Container>
   );
 };
