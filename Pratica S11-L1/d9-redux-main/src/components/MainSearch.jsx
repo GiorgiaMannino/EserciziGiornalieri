@@ -41,11 +41,19 @@ const MainSearch = () => {
         </Col>
         <Col xs={10} className="mx-auto">
           <Form onSubmit={handleSubmit}>
-            <Form.Control type="search" value={query} onChange={handleChange} placeholder="type and press Enter" />
+            <Form.Control type="search" value={query} onChange={handleChange} placeholder="Type and press Enter" />
           </Form>
         </Col>
         <Col xs={10} className="mx-auto mb-5">
-          {jobs.length > 0 ? jobs.map((jobData) => <Job key={jobData._id} data={jobData} />) : null}
+          {jobs.length > 0 ? (
+            <Row>
+              {jobs.map((jobData) => (
+                <Col xs={12} sm={6} md={4} lg={3} key={jobData._id} className="mt-2">
+                  <Job key={jobData._id} data={jobData} />
+                </Col>
+              ))}
+            </Row>
+          ) : null}
         </Col>
       </Row>
     </Container>

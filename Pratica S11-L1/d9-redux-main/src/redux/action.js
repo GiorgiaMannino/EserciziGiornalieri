@@ -1,14 +1,9 @@
-export const increment = (value) => ({
-  type: "INCREMENT",
-  payload: value,
-});
-
-export const addFavourite = (companyName) => ({
+export const addFavourite = (job) => ({
   type: "ADD_FAVOURITE",
-  payload: companyName,
+  payload: job,
 });
 
-export const removeFavourite = (companyName) => ({
+export const removeFavourite = (jobId) => ({
   type: "REMOVE_FAVOURITE",
-  payload: companyName,
+  payload: jobId,
 });
