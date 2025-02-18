@@ -1,26 +1,17 @@
+import { ADD_FAVOURITE, REMOVE_FAVOURITE } from "../action";
+
 const initialState = {
-  main: {
-    count: 0,
-  },
   favourites: [],
 };
 
-const mainReducer = (state = initialState, action) => {
+const favouritesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "INCREMENT":
-      return {
-        ...state,
-        main: {
-          ...state.main,
-          count: state.main.count + action.payload,
-        },
-      };
-    case "ADD_FAVOURITE":
+    case ADD_FAVOURITE:
       return {
         ...state,
         favourites: [...state.favourites, action.payload],
       };
-    case "REMOVE_FAVOURITE":
+    case REMOVE_FAVOURITE:
       return {
         ...state,
         favourites: state.favourites.filter((job) => job._id !== action.payload),
@@ -30,4 +21,4 @@ const mainReducer = (state = initialState, action) => {
   }
 };
 
-export default mainReducer;
+export default favouritesReducer;
