@@ -4,15 +4,15 @@ import { Card, Button, Row, Col } from "react-bootstrap";
 
 const Job = ({ data }) => {
   const dispatch = useDispatch();
-  const favourites = useSelector((state) => state.favourites);
+  const favourites = useSelector((state) => state.favourites.favourites);
 
   const isFavourite = favourites.some((job) => job._id === data._id);
 
   const handleFavourite = () => {
     if (isFavourite) {
-      dispatch(removeFavourite(data._id)); // Passiamo l'ID, non il nome dell'azienda
+      dispatch(removeFavourite(data._id));
     } else {
-      dispatch(addFavourite(data)); // Passiamo tutto il job per aggiungerlo ai preferiti
+      dispatch(addFavourite(data));
     }
   };
 

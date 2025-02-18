@@ -1,10 +1,10 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Card, Button, Row, Col, Container } from "react-bootstrap";
-import { removeFavourite } from "../../src/redux/action";
+import { removeFavourite } from "../redux/action";
 
 const Favourites = () => {
   const dispatch = useDispatch();
-  const favourites = useSelector((state) => state.favourites);
+  const favourites = useSelector((state) => state.favourites.favourites);
 
   const handleRemoveFavourite = (jobId) => {
     dispatch(removeFavourite(jobId));
