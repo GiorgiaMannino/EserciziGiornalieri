@@ -57,11 +57,7 @@ const numbers1: Array<number> = [1, 2, 3];
 console.log("10) Tipizzazione array (numero[]):", numbers);
 console.log("10) Tipizzazione array (Array<number>):", numbers1);
 
-// 11) Crea una tupla per definire un array di 5 elementi, i primi 3 devono essere stringhe e gli ultimi due numeri
-function getUser(): [string, number, string, string, number] {
-  return ["Giorgia", 25, "Engineer", "Italy", 30];
-}
-const userData = getUser();
+const userData: [string, string, string, number, number] = ["Giorgia", "Mannino", "Student", 25, 30];
 console.log("11) Tupla:", userData);
 
 // 12) Differenza tra type e interface

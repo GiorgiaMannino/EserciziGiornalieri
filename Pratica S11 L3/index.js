@@ -42,11 +42,7 @@ var numbers = [1, 2, 3];
 var numbers1 = [1, 2, 3];
 console.log("10) Tipizzazione array (numero[]):", numbers);
 console.log("10) Tipizzazione array (Array<number>):", numbers1);
-// 11) Crea una tupla per definire un array di 5 elementi, i primi 3 devono essere stringhe e gli ultimi due numeri
-function getUser() {
-    return ["Giorgia", 25, "Engineer", "Italy", 30];
-}
-var userData = getUser();
+var userData = ["Giorgia", "Mannino", "Student", 25, 30];
 console.log("11) Tupla:", userData);
 // 12) Differenza tra type e interface
 console.log("12) Differenza tra type e interface:", "TYPE -> tipo di elemento, INTERFACE -> definisce la struttura di un oggetto");
