@@ -17,6 +17,11 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/article/:id" element={<ArticleDetail />} />
       </Routes>
+      <footer className="bg-dark text-light py-3 mt-5 p-2">
+        <div className="container text-center">
+          <p className="mb-1">© 2025 Spaceflight </p>
+        </div>
+      </footer>
     </BrowserRouter>
   );
 }

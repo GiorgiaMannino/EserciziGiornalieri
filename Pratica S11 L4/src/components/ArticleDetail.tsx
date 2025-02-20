@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Article } from "../article/article";
-import { Spinner } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 
 const ArticleDetail = () => {
   const { id } = useParams<{ id: string }>();
@@ -22,12 +22,12 @@ const ArticleDetail = () => {
     );
 
   return (
-    <div>
-      <h1 className="mt-5 mb-5">{article.title}</h1>
-      <img src={article.image_url} alt={article.title} className="w-50" />
+    <Container>
+      <h1 className="mt-5 mb-5 text-start">{article.title}</h1>
+      <img src={article.image_url} alt={article.title} className="w-100 mb-3" />
       <p>{article.summary}</p>
       <small>{new Date(article.published_at).toLocaleDateString()}</small>
-    </div>
+    </Container>
   );
 };
 
